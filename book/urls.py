@@ -20,9 +20,10 @@ from book import views
 
 app_name = 'book'
 urlpatterns = [
-    url(r'^$',                             views.BookList.as_view()),
-    path('publishers',                   views.PublisherList.as_view(),  name='publisher_list'),
-    path('books',                         views.BookList.as_view(),       name='books_list'),
+    url(r'^$',                              views.BookList.as_view()),
+    path('publishers',                    views.PublisherList.as_view(),  name='publisher_list'),
+    # path('books',                         views.BookList.as_view(),       name='books_list'),
+    path('books',                          views.book_list,                    name='books_list'),
     url(r'^books/(\d+)$',             views.book_detail,                 name='book_detail'),
     url(r'^books/reader/(\d+)$',   views.book_read,                  name='book_read'),
 ]

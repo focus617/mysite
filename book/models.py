@@ -60,6 +60,7 @@ class Book(models.Model):
     publisher = models.ForeignKey(Publisher, on_delete=models.SET_NULL, null=True, blank=True)
     publication_date = models.DateField(blank=True, null=True)
     filepath = models.FileField(upload_to=file_dir_path, null=True)
+    abstract = models.CharField('摘要', max_length= 300, null=True)
 
     def __str__(self):
         return self.title

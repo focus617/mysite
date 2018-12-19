@@ -50,14 +50,19 @@ class BookList(ListView):
     context_object_name = 'book_list'
 
 
-def index(request):
-    return render(request, 'homepages/index.html')
+def book_list(request):
+    books = Book.objects.order_by('publication_date')
+    for book in books:
+        authors = Author.objects.filter(book__id=book.id)
+        book.author_name_list = ','.join(str(author) for author in authors)
+    return render(request, 'book/book_list.html', {'object_list': books,
+                                                   'directory': True})
 
 
 def book_detail(request, id):
     book = get_object_or_404(Book, pk=id)
     authors = Author.objects.filter(book__id=id)
-    return render(request, 'book/book_detail.html', {'book': book, 'authors':authors})
+    return render(request, 'book/book_detail.html', {'book': book, 'authors': authors, 'sidebar': True})
 
 
 def book_read(request, id):

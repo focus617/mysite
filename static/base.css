@@ -1,5 +1,5 @@
 body {
-	backgroud-color: #d2b48c;
+	backgroud-color: #b5a789;
 	margin-left: 8%;
 	margin-right: 8%;
 	border: 1px dotted gray;
@@ -7,10 +7,6 @@ body {
 	font-family: Verdana, Helvetica, sans-serif;
 	font-size: medium;
 	line-height: 1.6em
-}
-
-h1, h2 {
-	color: #007e7e;
 }
 
 h1 {
@@ -41,67 +37,79 @@ blockquote {
 	font-style: italic;
 }
 
-.container {
-  text-align: left;
-}
-
-#id_new_item {
-	margin-top: 2ex;
-	text-align: center;
-}
-
-#guarantee {
-	line-height: 1.9em;
-	font-style: italic;
-	font-family: Georgia, "Times New Roman", Times, serif;
-	color: #444444;
-	border-color: white;
-	border-width: 1px;
-	border-style: dashed;
-	background-color: #a7cece;
-	padding: 25px;
-	padding-left: 80px;
-	margin: 30px;
-	margin-right: 250px;
-	background-image: url(images/background.gif);
-	background-repeat: no-repeat;
-	background-position: top left;
-}
-
-#footer {
-	font-size: 70%;
-	text-align: center;
-	line-height: normal;
-	margin-top: 30px;
-}
-
-#content {
-	/*width: 400px;*/
-	border: thin solid #007e7e;
-	margin: 0px 20px 20px 20px;
-	padding: 0px 20px 30px 10px;
-	background: white url(images/cocktail.gif) repeat-x;
-	/*text-align: center;*/
-	line-height: 2em
-}
-
-#elixirs h2 {
-	color: black;
-}
-
-#elixirs h3 {
-	color: #d12c47;
-}
-
-#elixirs a:link {
+a:link {
 	color: #007e7e;
 }
 
-#elixirs a:visited {
+a:visited {
 	color: #333333;
 }
 
-#elixirs a:hover {
+a:hover {
 	background: #f88396;
 	color: #0d5353;
 }
+
+.container {
+	border: thin solid #007e7e;
+	background-color:  #b5a789;
+	background: url(images/cocktail.gif) repeat-x;
+	background-position: bottom;
+	text-align: left;
+}
+
+#header {
+	background-color: #675c47;
+	color: #efe5d0;
+	text-align: center;
+}
+
+#footer {
+	background-color: #675c47;
+	color: #efe5d0;
+	font-size: 90%;
+	text-align: center;
+	line-height: normal;
+}
+
+#directory {
+
+	line-height: 2em;
+	border: thin solid #007e7e;
+	margin-right: 10px;
+	padding: 10px;
+	width: 190px;
+	float: left;
+}
+
+#content {
+	margin: 0px 0px 0px 50px;
+	padding: 10px;
+	line-height: 2em;
+}
+
+#sidebar {
+	border: thin solid #007e7e;
+	background-color: #efe5d0;
+	margin: 10px;
+	padding: 15px;
+	font-size: 105%;
+	width: 250px;
+	height: 368px;
+	float: right;
+}
+
+#slideview {
+	border: thin solid #007e7e;
+	background-color: #efe5d0;
+	margin: 0px 290px 10px 0px;
+	padding: 20px 0px 0px 50px;
+	line-height: 2em;
+}
+
+.slogan {
+	color: #954b4b;
+}
+
+
+

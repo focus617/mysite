@@ -4,18 +4,13 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <title>{% block title %}Web Application{% endblock %}</title>
-    
-    <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="/static/base.css" rel="stylesheet" media="screen">
     {% block css %} {% endblock %}
 </head>
 
-<body  id="top">
-  <div class="container">
-      <div class="col-md-8 col-md-offset-1">
-          <header class="text-center">
+<body>
+    <header id="header">
               <h1>{% block header_text %}{% endblock %}</h1>
               {% if form %}
                   <form method="POST" action="{% block form_action %}{% endblock %}">
@@ -27,35 +22,38 @@
                           </div>
                       {% endif %}
                   </form>
-                {% endif %}
-            </header>
-      </div>
+              {% endif %}
+          </header>
 
-      <section class="row" id="content">
-          <div class="col-md-11 col-md-offset-1">
-              {% block content %} {% endblock %}
-          </div>
-      </section>
+    <div class="container">
+          {% if directory %}
+              <section class="row" id="directory">
+                  {% block directory %} {% endblock %}
+               </section>
+          {% endif %}
 
-      <aside class="row"  id="sidebar">
-          <div class="col-md-11 col-md-offset-1">
-              {% block sidebar %} {% endblock %}
-          </div>
-      </aside>
+          {% if sidebar %}
+              <aside class="row"  id="sidebar">
+                      {% block sidebar_content %} {% endblock %}
+              </aside>
+          {% endif %}
 
-    <hr>   
-    <p>
-      <a href={% url 'homepages:home' %}> Go back </a>
-    </p>
-  
+          <section class="row" id="content">
+                {% block content %} {% endblock %}
+           </section>
+
+      <hr>
+      <p>
+          <a href={% url 'homepages:home' %}> Back Home </a>
+      </p>
+     </div>
+
     <footer id="footer">
-      <small>
-        &copy; 2018, Xu Zhiyong's Web-Site<br>
-        All trademarks and registered trademarks appearing on this site are
-        the property of their respective owners.
-      </small>
+        <small>
+            &copy; 2018, Xu Zhiyong's Web-Site<br>
+            All trademarks and registered trademarks appearing on this site are
+            the property of their respective owners.
+        </small>
     </footer>
-    
-  </div>
 </body>
 </html>
