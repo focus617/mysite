@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>
+        <a href={% url 'book:book_read' book.id %}>
+        {% if book.book_cover %}
+            <img src="{{ book.book_cover.url }}" alt="headshot" width="105" height="142"/>
+        {% endif %}
+        {{ book.title }}
+        </a>
+    </h1>
+
+    <p>
+        作者:
+        {% for author in authors %}
+            {% if author.headshot %}
+                <img src="{{ author.headshot.url }}" alt="headshot" width="60" height="60"/>
+            {% endif %}
+            {{ author }},
+        {% endfor %}
+    </p>
+    <p>出版商: {{ book.publisher }}</p>
+    <p>出版日期: {{ book.publication_date }}</p>
+
+{% endblock %}

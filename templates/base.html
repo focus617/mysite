@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>{% block title %}Web Application{% endblock %}</title>
+    
+    <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="/static/base.css" rel="stylesheet" media="screen">
+    {% block css %} {% endblock %}
+</head>
+
+<body  id="top">
+  <div class="container">
+      <div class="col-md-8 col-md-offset-1">
+          <header class="text-center">
+              <h1>{% block header_text %}{% endblock %}</h1>
+              {% if form %}
+                  <form method="POST" action="{% block form_action %}{% endblock %}">
+                      {{ form.text }}
+                      {% csrf_token %}
+                      {% if form.errors %}
+                          <div class="form-group has-error">
+                            <span class="help-block">{{ form.text.errors }}</span>
+                          </div>
+                      {% endif %}
+                  </form>
+                {% endif %}
+            </header>
+      </div>
+
+      <section class="row" id="content">
+          <div class="col-md-11 col-md-offset-1">
+              {% block content %} {% endblock %}
+          </div>
+      </section>
+
+      <aside class="row"  id="sidebar">
+          <div class="col-md-11 col-md-offset-1">
+              {% block sidebar %} {% endblock %}
+          </div>
+      </aside>
+
+    <hr>   
+    <p>
+      <a href={% url 'homepages:home' %}> Go back </a>
+    </p>
+  
+    <footer id="footer">
+      <small>
+        &copy; 2018, Xu Zhiyong's Web-Site<br>
+        All trademarks and registered trademarks appearing on this site are
+        the property of their respective owners.
+      </small>
+    </footer>
+    
+  </div>
+</body>
+</html>
