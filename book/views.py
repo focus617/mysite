@@ -62,29 +62,49 @@ def book_list(request):
 def book_detail(request, id):
     book = get_object_or_404(Book, pk=id)
     authors = Author.objects.filter(book__id=id)
-    return render(request, 'book/book_detail.html', {'book': book, 'authors': authors, 'sidebar': True})
+    book.author_name_list = ','.join(str(author) for author in authors)
 
-
-def book_read(request, id):
-    line_per_page = 1000              #每页显示的行数
-
-    book = get_object_or_404(Book, pk=id)
     filepath = file_dir_path(book)
     file = os.path.join(settings.MEDIA_ROOT, filepath.replace('/', '\\'))
 
     with open(str(file), encoding='utf-16') as f:
-        contents = []
-        count = 0
+        titles = []
+        title = None
 
         regEx = r"第[\u4E00-\u9FA5]+章";
         pattern = re.compile(regEx)
 
         for line in f:
-            match = pattern.match(line)
-            if match:
-                contents.append(match.group())
+            if pattern.match(line):
+                titles.append(line.strip())
 
-            contents.append(line.strip())
-            count += 1
-            if count > line_per_page: break
-    return render(request, 'book/book_read.html', {'book': book, 'contents': contents})
+    return render(request, 'book/book_detail.html', {'book': book, 'titles': titles, 'sidebar': True})
+
+
+def book_read(request, id):
+    line_per_page = 150              #每页显示的行数
+
+    book = get_object_or_404(Book, pk=id)
+    authors = Author.objects.filter(book__id=id)
+    book.author_name_list = ','.join(str(author) for author in authors)
+
+    filepath = file_dir_path(book)
+    file = os.path.join(settings.MEDIA_ROOT, filepath.replace('/', '\\'))
+
+    with open(str(file), encoding='utf-16') as f:
+        contents = []
+        title = None
+
+        regEx = r"第[\u4E00-\u9FA5]+章";
+        pattern = re.compile(regEx)
+
+        for line in f:
+            if pattern.match(line):
+                if not title:
+                    title = line[:]
+                    continue
+                else:
+                    break
+            else:
+                contents.append(line.strip())
+    return render(request, 'book/book_read.html', {'book': book, 'title': title, 'contents': contents})
