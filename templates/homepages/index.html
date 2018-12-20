@@ -2,73 +2,73 @@
 
 {% block header_text %}
     <h1>
-		<img src="/static/images/svg_logo.svg" alt="logo" width="100" height="100" />
-		Welcome to Xu Zhiyong's Home Page!
+		<img id="headerLogo" src="/static/images/svg_logo.svg" alt="logo" width="100" height="100" />
+        <p class="slogan">Welcome to Xu Zhiyong's Home Page!</p>
 	</h1>
 {% endblock %}
 
 {% block content %}
-	<p>
-		Lao Tzu would have said, <br> <q> A journey of a thousand
-			miles begins with <em>the first step.</em>
-		</q>
-	</p>
+        <p>
+            <a href="html5/firstLoughe" title="Link to another web-page">
+                <img src="/static/images/jackal.jpg" alt="a picture of jackal" />
+            </a>
 
-	<a href="html5/firstLoughe" title="Link to another web-page"> 
-	<img src="/static/images/jackal.jpg" alt="a picture of jackal" />
-	</a>
+            <em>
+                Lao Tzu would have said, <br> <q> A journey of a thousand
+                miles begins with the first step.</q>
+            </em>
+        </p>
 
-	<h3>My address:</h3>
-	<Address>
-		No.3-1-2102, Jing Lan Ban Dao <br> No.488, HongJiXin Road <br>
-		Jingjiang Distinct, Chengdu <br> Postnum: 610061
-	</Address>
+        <h1>My address:</h1>
+        <Address>
+            No.3-1-2102, Jing Lan Ban Dao <br> No.488, HongJiXin Road <br>
+            Jingjiang Distinct, Chengdu <br> Postnum: 610061
+        </Address>
 
-	<ol>
-		<li>Charge Segway</li>
-		<li>Pack for trip
-			<ul>
-				<li>cell phone</li>
-				<li>iPod</li>
-			</ul>
-		</li>
-		<li>Call mother</li>
-	</ol>
+        <ol>
+            <li>Charge Segway</li>
+            <li>Pack for trip
+                <ul>
+                    <li>cell phone</li>
+                    <li>iPod</li>
+                </ul>
+            </li>
+            <li>Call mother</li>
+        </ol>
 
-	<p id='manpage'>Test:
-		&#208;&epsilon;&tau;&#114;&ouml;&igrave;&tau;.</p>
+        <p id='manpage'>Test:
+            &#208;&epsilon;&tau;&#114;&ouml;&igrave;&tau;.</p>
 
-	<p>How long a line can you draw with the typical pencil?</p>
-	<p>
-		<img src="http://www.headfirstlabs.com/trivia/pencil.gif"
-			alt="pencil with the line" />
-	</p>
+        <p>How long a line can you draw with the typical pencil?</p>
+        <p>
+            <img src="http://www.headfirstlabs.com/trivia/pencil.gif"
+                alt="pencil with the line" />
+        </p>
 
-	<hr>
-	<h2>Links</h2>
+        <hr>
+        <h2>Links</h2>
 
-	<p>
-	  <a href={% url 'book:books_list' %} title="Link to book management web-page">
-            Book Management</a> <br>
-      <a href={% url 'homepages:datetime' %} title="Link to current datetime web-page">
-            Current Time</a> <br>
-       <a href="../admin" title="Link to website management page">
-           Website Management</a> <br>
-       <a href="../about" title="Link to about page">
-            About</a> <br>
-{#    <a href="../lists/new" title="Link to TDD testing web-page">#}
-{#        Testing-Driven Design Home Page</a> <br> #}
-{#		<a href={% url 'homepages:firstLoughe' %} title="Link to HTML5&CSS testing web-page">#}
-{#		    HTML5&CSS Testing Page</a> <br> #}
-{#		<a href={% url 'homepages:newLounge' %} title="Link to CSS web-page">#}
-{#		    HTML5&CSS Testing Page 2</a> <br> #}
-{#		<a href={% url 'homepages:myFirstJavaScript' %} title="Link to HTML5&JavaScript testing web-page">#}
-{#			HTML5&JavaScript Testing Page</a> <br> #}
-{#		<a href={% url 'homepages:json' %} title="Link to HTML5&JSON testing web-page">#}
-{#			HTML5&JSON Testing Page</a> <br> #}
-{#	  <a href={% url 'homepages:show_picture' %} title="Link to Bokeh webui"> Bokeh WebUI Testing Page</a> <br> #}
-	  <br>
-	  <a href="#top"> Back to top</a> 
-	</p>
-
+        <p>
+          <a href={% url 'book:books_list' %} title="Link to book management web-page">
+                Book Management</a> <br>
+          <a href={% url 'homepages:datetime' %} title="Link to current datetime web-page">
+                Current Time</a> <br>
+           <a href="../admin" title="Link to website management page">
+               Website Management</a> <br>
+           <a href="../about" title="Link to about page">
+                About</a> <br>
+    {#    <a href="../lists/new" title="Link to TDD testing web-page">#}
+    {#        Testing-Driven Design Home Page</a> <br> #}
+    		<a href={% url 'homepages:firstLoughe' %} title="Link to HTML5&CSS testing web-page">
+    		    HTML5&CSS Testing Page</a> <br>
+    		<a href={% url 'homepages:newLounge' %} title="Link to CSS web-page">
+    		    HTML5&CSS Testing Page 2</a> <br>
+    {#		<a href={% url 'homepages:myFirstJavaScript' %} title="Link to HTML5&JavaScript testing web-page">#}
+    {#			HTML5&JavaScript Testing Page</a> <br> #}
+    {#		<a href={% url 'homepages:json' %} title="Link to HTML5&JSON testing web-page">#}
+    {#			HTML5&JSON Testing Page</a> <br> #}
+    {#	  <a href={% url 'homepages:show_picture' %} title="Link to Bokeh webui"> Bokeh WebUI Testing Page</a> <br> #}
+          <br>
+          <a href="#top"> Back to top</a>
+        </p>
 {% endblock %}

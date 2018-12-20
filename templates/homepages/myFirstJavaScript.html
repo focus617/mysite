@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>My first HTML&JavaScript web page</title>
+	<meta charset="utf-8">
+	<script src="/static/myJavaScript.js"></script>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?
+	              key=&v=1.1&services=true"></script>
+	<style>
+		canvas {
+			border: 1px solid black;
+		}
+		body {
+			backgroud-color: #d2b48c;
+			margin-left: 8%;
+			margin-right: 8%;
+			border: 1px dotted gray;
+			padding: 10px 10px 10px 10px;
+			font-family: "Courier New", Verdana, Helvetica, sans-serif;
+		}
+		p {
+			color: maroon
+		}
+	</style>
+</head>
+
+<body>
+	<h1>My blog</h1>
+	<hr>
+	<div id="entry1">
+		<h2>Where am I:</h2>
+		<p id="location">My location will go here.</p>
+    <div style="width:697px;height:550px;border:#ccc solid 1px;" id="dituContent"></div>
+	</div>
+
+	<div id="entry2">
+		<h2>My favorite songs</h2>
+		<form>
+			<input type="text" id="songTextInput" size="40" placeholder="Song name"> 
+			<input type="button" id="addButton" value="Add Song">
+		</form>
+		<ul id="playlist"></ul>
+	</div>
+
+	<div id="entry3">
+		<h2>Look What I Draw</h2>
+		<canvas id="lookwhatIdrew" width="600" height="400">
+     		<p>Hey, you need upgrade your browser for HTML5 supporting!</p>
+     	</canvas>
+		<form>
+			<p>
+				<label for="backgroundColor">Select background color:</label> 
+				<select	id="backgroundColor">
+					<option value="white" selected="selected">White</option>
+					<option value="black">Black</option>
+				</select>
+			</p>
+			<p>
+				<label for="shape">Select shape:</label> 
+				<select id="shape">
+					<option value="none" selected="selected">Neither</option>
+					<option value="circles">Circles</option>
+					<option value="squares">Squares</option>
+					<option value="triangles">Triangles</option>
+					<option value="smileface">SmileFace</option>
+				</select>
+			</p>
+			<p>
+				<label for="foregroundColor">Select text color:</label>
+				<select id="foregroundColor">
+					<option value="black" selected="selected">Black</option>
+					<option value="white">White</option>
+				</select>
+			</p>
+			<p>
+				<label for="tweets">Pick a tweet:</label> 
+				<select id="tweets">
+				</select>
+			</p>
+			<p>
+				<input type="button" id="previewButton" value="Preview">
+			</p>
+		</form>
+	</div>
+	<hr>
+	
+	<div id="entry3">
+		<h2>WebTV</h2>
+		<video controls width="480" height="360" id="video">
+		</video>
+		<ul id="playlist"></ul>
+	</div>
+	<hr>
+	<p>
+		<a href={% url 'homepages:home' %}> Back homepage </a>
+	</p>
+</body>
+</html>

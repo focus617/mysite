@@ -18,10 +18,10 @@ from homepages import views
 
 app_name = 'homepages'
 urlpatterns = [
-    url(r'^$',                         views.home_page,   name='home'),
+    url(r'^$',                          views.home_page,   name='home'),
     url(r'^datetime$',              views.date_time,  name='datetime'),
-    # url(r'^firstLoughe',          views.firstLoughe,    name='firstLoughe'),
-    # url(r'^newLounge',          views.newLounge,   name='newLounge'),
+    url(r'^firstLoughe',             views.firstLoughe,    name='firstLoughe'),
+    url(r'^newLounge',             views.newLounge,   name='newLounge'),
     # url(r'^myFirstJavaScript',  views.myFirstJavaScript,  name='myFirstJavaScript'),
     # url(r'^json',                    views.json,             name='json'),
     # # url(r'^webui',                  webui.draw_picture, name='show_picture'),
