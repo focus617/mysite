@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <header id="header">
+    <header class="top">
               <h1>{% block header_text %}{% endblock %}</h1>
               {% if form %}
                   <form method="POST" action="{% block form_action %}{% endblock %}">
@@ -23,32 +23,36 @@
                       {% endif %}
                   </form>
               {% endif %}
-          </header>
+    </header>
 
-    <div class="container">
-          {% if directory %}
-              <section class="row" id="directory">
-                  {% block directory %} {% endblock %}
-               </section>
-          {% endif %}
+    <div id="container">
+        <div id="tableContainer">
+            <div id="tableRow">
+                {% if directory %}
+                    <section id="directory">
+                        {% block directory %} {% endblock %}
+                    </section>
+                {% endif %}
 
-          {% if sidebar %}
-              <aside class="row"  id="sidebar">
-                      {% block sidebar_content %} {% endblock %}
-              </aside>
-          {% endif %}
+                <section id="content">
+                    {% block content %} {% endblock %}
+                </section>
 
-          <section class="row" id="content">
-                {% block content %} {% endblock %}
-           </section>
+                {% if sidebar %}
+                    <aside>
+                        {% block sidebar_content %} {% endblock %}
+                    </aside>
+                {% endif %}
+            </div> <!-- tableRow -->
+        </div>  <!-- tableContainer -->
 
-      <hr>
-      <p>
-          <a href={% url 'homepages:home' %}> Back Home </a>
-      </p>
-     </div>
+        <hr>
+        <p id="gohome">
+                <a href={% url 'homepages:home' %}> Back Home </a>
+            </p>
+    </div>  <!-- container -->
 
-    <footer id="footer">
+    <footer>
         <small>
             &copy; 2018, Xu Zhiyong's Web-Site<br>
             All trademarks and registered trademarks appearing on this site are

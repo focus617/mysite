@@ -1,0 +1,161 @@
+@font-face {
+	font-family: "Emblema One";
+	src: url("http://wickedlysmart.com/hfhtmlcss/chapter8/journal/EmblemaOne-Regular.woff");
+	      url("http://wickedlysmart.com/hfhtmlcss/chapter8/journal/EmblemaOne-Regular.ttf");
+}
+
+body {
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: small;
+	line-height: 1.6em;
+	backgroud-color: #b5a789;
+	margin-left: 8%;
+	margin-right: 8%;
+	border: 1px dotted gray;
+	padding: 0px 10px 0px 10px;
+}
+
+h1 {
+	font-family: "Emblema One", sans-serif;
+	font-size: 120%;
+	color: #954b4b;
+}
+
+h2 {
+	font-size: 130%;
+	color: #007e7e;
+}
+
+h3 {
+	font-size: 115%;
+	font-weight: normal;
+}
+
+p {
+	color: black;
+}
+
+em {
+	font-weight: bolder;
+	text-decoration: blink;
+}
+
+Address {
+	font-style: italic;
+}
+
+a:link {
+	color: #b76666;
+	text-decoration: none;
+	border-bottom: thin dotted #b76666;
+}
+
+a:visited {
+	color: #b76666;
+	text-decoration: none;
+	border-bottom: thin dotted #675c47;
+}
+
+a:hover {
+	background: #f88396;
+	color: #0d5353;
+}
+
+.cell {
+	display: table-cell;
+}
+
+header.top {
+	background-color: #675c47;
+	margin: 10px;
+	height: 200px;
+}
+
+header.slogan {
+	color: #954b4b;
+}
+
+.beanheading {
+	text-align: center;
+	line-height: 1.8em;
+}
+
+footer {
+	background-color: #675c47;
+	color: #efe5d0;
+	font-size: 90%;
+	text-align: center;
+	line-height: normal;
+	clear: right;
+}
+
+.main {
+	background:  #efe5d0 url(images/background.gif) top left;
+	font-size: 105%;
+	padding: 15px;
+	margin: 0px 10px 10px 10px;
+}
+
+.sidebar {
+	background: #efe5d0 url("images/background.gif") bottom right;
+	font-size: 105%;
+	padding: 15px;
+	margin: 0px 10px 10px 10px;
+}
+
+#elixirs {
+	border: #007e7e thin solid;
+	width: 200px;
+	padding: 0px 20px 20px 20px;
+	margin-left: 20px;
+	text-align: center;
+	background-image: url(images/cocktail.gif);
+	background-repeat: repeat-x;
+	line-height: 1;
+	float: right;
+}
+
+#elixirs h2 {
+	color: black;
+}
+
+#elixirs h3 {
+	color: #d12c47;
+}
+
+#elixirs a:link {
+	color: #007e7e;
+}
+
+#elixirs a:visited {
+	color: #333333;
+}
+
+#elixirs a:hover {
+	background: #f88396;
+	color: #0d5353;
+}
+
+#guarantee {
+	border: white 3px dashed;
+	background: #a7cece url("images/background.gif") no-repeat  top left;
+	padding: 25px;
+	padding-left: 80px;
+	margin: 30px;
+	margin-right: 250px;
+	color: #444444;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-style: italic;
+	line-height: 1.9em;
+}
+
+.cd {
+	font-style: italic;
+}
+
+.artist {
+	font-weight: bold;
+}
+
+
+
