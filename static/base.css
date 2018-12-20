@@ -174,23 +174,29 @@ aside {
 	padding: 0px 0px 0px 40px;
 }
 
-
-#guarantee {
-	border-color: white;
-	border-width: 3px;
-	border-style: dashed;
-	background-color: #a7cece;
-	background-image: url("images/background.gif");
-	background-repeat: no-repeat;
-	background-position: top left;
-	padding: 25px;
-	padding-left: 80px;
-	margin: 30px;
-	margin-right: 250px;
-	color: #444444;
-	font-family: Georgia, "Times New Roman", Times, serif;
-	font-style: italic;
-	line-height: 1.9em;
+table {
+	margin-left: 20px;
+	margin-right: 20px;
+	border: thin solid black;
+	caption-side: top;
+	border-collapse: collapse;
 }
 
+td, th {
+	border: thin dotted gray;
+	padding: 5px;
+}
+
+th {
+	background-color: #cc6600;
+}
+
+tr:nth-child(even) {
+	background-color: #fcba7a;
+}
+
+caption {
+	font-style: italic;
+	padding-bottom: 8px;
+}
 
