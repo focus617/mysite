@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% block title %}Web Application{% endblock %}
+
 {% block header_text %}
         {% if book.book_cover %}
             <img src="{{ book.book_cover.url }}" alt="headshot" width="105" height="142"/>
