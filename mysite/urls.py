@@ -25,7 +25,7 @@ from homepages import views as home_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('about/', TemplateView.as_view(template_name="homepages/about.html")),
+    path('about/', TemplateView.as_view(template_name="homepages/about.html"), name="about"),
     url(r'^$',       home_view.home_page),
     url(r'^index/', include('homepages.urls')),
     url(r'^book/', include('book.urls')),

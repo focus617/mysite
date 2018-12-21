@@ -8,7 +8,6 @@ body {
 	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
 	font-size: medium;
 	line-height: 1.6em;
-
 	backgroud-color: #b5a789;
 	margin-left: 8%;
 	margin-right: 8%;
@@ -119,12 +118,16 @@ section#directory {
 	display: table-cell;
 	line-height: 2em;
 	border: thin solid #007e7e;
-	/*margin-right: 10px;*/
 	padding: 10px;
 	background-color: #efe5d0;
 	width: 20%;
 }
 
+section#directory ul li {
+	list-style-type: square;
+	padding-top: 10px;
+	margin-top: 20px;
+}
 section#content {
 	display: table-cell;
 	padding: 10px;
@@ -143,7 +146,7 @@ section#content ul {
 	background-color: #efe5d0;
 }
 
-section#content ul li{
+section#content ul li {
 	display: inline;
 	padding: 0px 10px 0px 10px;
 }
