@@ -4,15 +4,14 @@ from django.core.exceptions import ValidationError
 import datetime
 
 # Create your views here.
-from lists.models import Item, List
-from lists.forms import ItemForm, ExistingListItemForm
+# from lists.models import Item, List
+# from lists.forms import ItemForm, ExistingListItemForm
 
 
 def home_page(request):
-    # R1:
-    #    return render(request, 'home.html', {
-    #     'new_item_text': new_item_text,
-    #      })
+    #R1:
+       return render(request, 'lists/home.html')
+        # { 'new_item_text': new_item_text,})
     # R2:
     #     if request.method == 'POST':
     #         Item.objects.create(text=request.POST['text'])
@@ -21,7 +20,7 @@ def home_page(request):
     #        return render(request, 'home.html')
     # R3: migrates POST to new_list view,
     #     via home.html: <form method="POST" action="lists/new">
-    return render(request, 'home.html', {'form': ItemForm()})
+    # return render(request, 'home.html', {'form': ItemForm()})
 
 
 # def view_list(request, list_id):

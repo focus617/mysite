@@ -6,7 +6,7 @@ from django.conf import settings
 import  os
 import re
 
-from book.models import  Publisher, Author, Book, file_dir_path
+from book.models import Publisher, Author, Book, file_dir_path
 
 # Create your views here.
 

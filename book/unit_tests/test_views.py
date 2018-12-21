@@ -1,7 +1,7 @@
 #!/usr/bin/env python
-# -*- coding:gbk -*-
+# -*- coding:utf-8 -*-
 
-from django.core.urlresolvers import resolve
+from django.urls import resolve
 from django.test import TestCase
 from django.http import HttpRequest
 from django.template.loader import render_to_string
@@ -11,21 +11,7 @@ from unittest import skip
 import datetime
 
 # Create your tests here.
-from books.models import Classfication, Author, Publisher, Book
-
-
-class DateTimeTest(TestCase):
-
-    def test_page_renders_datetime_template(self):
-        response = self.client.get('/books/datetime')
-        self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'datetime.html')
-
-    def test_passes_correct_offset_to_template(self):
-        response = self.client.get('/books/datetime/8/')
-        now = datetime.datetime.now() + datetime.timedelta(hours=8)
-        # response.find_element_by_id('local_date_time')
-        #self.assertEqual(response.context['local_date_time'], str(now))
+from book.models import Classfication, Author, Publisher, Book
 
 
 # class NewListTest(TestCase):
@@ -93,22 +79,22 @@ class DateTimeTest(TestCase):
 #     def test_uses_list_template(self):
 #         #         response = self.client.get('/lists/the-only-list-in-the-world/')
 #         list_ = List.objects.create()
-#         # Ê¹ÓÃDjango ²âÊÔ¿Í»§¶Ë
+#         # ä½¿ç”¨Django æµ‹è¯•å®¢æˆ·ç«¯
 #         response = self.client.get('/lists/%d/' % (list_.id,))
-#         # ¼ì²éÊ¹ÓÃµÄÄ£°å¡£È»ºóÔÚÄ£°åµÄÉÏÏÂÎÄÖĞ¼ì²é¸÷¸ö´ı°ìÊÂÏî
+#         # æ£€æŸ¥ä½¿ç”¨çš„æ¨¡æ¿ã€‚ç„¶ååœ¨æ¨¡æ¿çš„ä¸Šä¸‹æ–‡ä¸­æ£€æŸ¥å„ä¸ªå¾…åŠäº‹é¡¹
 #         self.assertTemplateUsed(response, 'list.html')
 #
 #     def test_passes_correct_list_to_template(self):
 #         other_list = List.objects.create()
 #         correct_list = List.objects.create()
 #         response = self.client.get('/lists/%d/' % (correct_list.id,))
-#         # ¼ì²éÃ¿¸ö¶ÔÏó¶¼ÊÇÏ£ÍûµÃµ½µÄ£¬»òÕß²éÑ¯¼¯ºÏÖĞ°üº¬ÕıÈ·µÄ´ı°ìÊÂÏî
+#         # æ£€æŸ¥æ¯ä¸ªå¯¹è±¡éƒ½æ˜¯å¸Œæœ›å¾—åˆ°çš„ï¼Œæˆ–è€…æŸ¥è¯¢é›†åˆä¸­åŒ…å«æ­£ç¡®çš„å¾…åŠäº‹é¡¹
 #         self.assertEqual(response.context['list'], correct_list)
 #
 #     def test_displays_item_form(self):
 #         list_ = List.objects.create()
 #         response = self.client.get('/lists/%d/' % (list_.id,))
-#         # ¼ì²é±íµ¥Ê¹ÓÃÕıÈ·µÄÀà
+#         # æ£€æŸ¥è¡¨å•ä½¿ç”¨æ­£ç¡®çš„ç±»
 #         self.assertIsInstance(response.context['form'], ExistingListItemForm)
 #         self.assertContains(response, 'name="text"')
 #
@@ -134,7 +120,7 @@ class DateTimeTest(TestCase):
 #
 #         response = self.client.get('/lists/%d/' % (correct_list.id,))
 #
-#         # ¼ì²éÄ£°åÂß¼­£ºÃ¿¸öfor ºÍif Óï¾ä¶¼Òª×ö×î¼òµ¥µÄ²âÊÔ¡£
+#         # æ£€æŸ¥æ¨¡æ¿é€»è¾‘ï¼šæ¯ä¸ªfor å’Œif è¯­å¥éƒ½è¦åšæœ€ç®€å•çš„æµ‹è¯•ã€‚
 #         self.assertContains(response, 'itemey 1')
 #         self.assertContains(response, 'itemey 2')
 #         self.assertNotContains(response, 'other list item 1')
@@ -159,7 +145,7 @@ class DateTimeTest(TestCase):
 #             data={'text': 'A new item for an existing list'}
 #         )
 #
-#         # ¶ÔÓÚ´¦ÀíPOST ÇëÇóµÄÊÓÍ¼£¬È·±£ÓĞĞ§ºÍÎŞĞ§Á½ÖÖÇé¿ö¶¼Òª²âÊÔ
+#         # å¯¹äºå¤„ç†POST è¯·æ±‚çš„è§†å›¾ï¼Œç¡®ä¿æœ‰æ•ˆå’Œæ— æ•ˆä¸¤ç§æƒ…å†µéƒ½è¦æµ‹è¯•
 #         self.assertEqual(Item.objects.count(), 1)
 #         new_item = Item.objects.first()
 #         self.assertEqual(new_item.text, 'A new item for an existing list')
@@ -187,7 +173,7 @@ class DateTimeTest(TestCase):
 # #         self.assertTemplateUsed(response, 'list.html')
 # #         self.assertContains(response, escape(EMPTY_LIST_ERROR))
 #
-# # ¶ÔÓÚ´¦ÀíPOST ÇëÇóµÄÊÓÍ¼£¬È·±£ÓĞĞ§ºÍÎŞĞ§Á½ÖÖÇé¿ö¶¼Òª²âÊÔ
+# # å¯¹äºå¤„ç†POST è¯·æ±‚çš„è§†å›¾ï¼Œç¡®ä¿æœ‰æ•ˆå’Œæ— æ•ˆä¸¤ç§æƒ…å†µéƒ½è¦æµ‹è¯•
 #     def post_invalid_input(self):
 #         list_ = List.objects.create()
 #         return self.client.post(
@@ -204,7 +190,7 @@ class DateTimeTest(TestCase):
 #         self.assertEqual(response.status_code, 200)
 #         self.assertTemplateUsed(response, 'list.html')
 #
-# # ½¡È«ĞÔ¼ì²é£¬¼ì²éÊÇ·ñäÖÈ¾Ö¸¶¨µÄ±íµ¥£¬¶øÇÒÊÇ·ñÏÔÊ¾´íÎóÏûÏ¢
+# # å¥å…¨æ€§æ£€æŸ¥ï¼Œæ£€æŸ¥æ˜¯å¦æ¸²æŸ“æŒ‡å®šçš„è¡¨å•ï¼Œè€Œä¸”æ˜¯å¦æ˜¾ç¤ºé”™è¯¯æ¶ˆæ¯
 #     def test_for_invalid_input_passes_form_to_template(self):
 #         response = self.post_invalid_input()
 #         self.assertIsInstance(response.context['form'], ExistingListItemForm)

@@ -28,5 +28,6 @@ urlpatterns = [
     path('about/', TemplateView.as_view(template_name="homepages/about.html"), name="about"),
     url(r'^$',       home_view.home_page),
     url(r'^index/', include('homepages.urls')),
-    url(r'^book/', include('book.urls')),
+    url(r'^book/',  include('book.urls')),
+    url(r'^lists/',   include('lists.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

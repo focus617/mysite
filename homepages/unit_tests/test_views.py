@@ -30,3 +30,17 @@ class HomePageTest(TestCase):
         response = home_page(request)
         expected_html = render_to_string('homepages/index.html')
         self.assertMultiLineEqual(response.content.decode(), expected_html)
+
+
+class DateTimeTest(TestCase):
+
+    def test_page_renders_datetime_template(self):
+        response = self.client.get('/index/datetime')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'homepages/datetime.html')
+
+    # def test_passes_correct_offset_to_template(self):
+    #     response = self.client.get('/books/datetime/8/')
+    #     now = datetime.datetime.now() + datetime.timedelta(hours=8)
+        # response.find_element_by_id('local_date_time')
+        #self.assertEqual(response.context['local_date_time'], str(now))
