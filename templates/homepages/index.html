@@ -3,15 +3,13 @@
 {% block title %}Web Application{% endblock %}
 
 {% block header_text %}
-    <h1>
 		<img id="headerLogo" src="/static/images/svg_logo.svg" alt="logo" width="100" height="100" />
-        <p class="slogan">Welcome to Xu Zhiyong's Home Page!</p>
-	</h1>
+        <h1 class="slogan">Welcome to Xu Zhiyong's Home Page!</h1>
 {% endblock %}
 
 {% block content %}
         <p>
-            <a href="html5/firstLoughe" title="Link to another web-page">
+            <a href={% url 'homepages:newLounge' %} title="Link to another web-page">
                 <img src="/static/images/jackal.jpg" alt="a picture of jackal" />
             </a>
 
@@ -50,19 +48,19 @@
         <hr>
         <h2>Links</h2>
         <p>
-          <a href={% url 'book:books_list' %} title="Link to book management web-page">Book Management</a> <br>
-          <a href={% url 'homepages:datetime' %} title="Link to current datetime web-page">Current Time</a> <br>
-           <a href="../admin" title="Link to website management page">Website Management</a> <br>
-           <a href="../about" title="Link to about page">About</a> <br>
-            <a href={% url 'homepages:newLounge' %} title="Link to HTML5&CSS web-page">HTML5&CSS Testing Page</a> <br>
-    		<a href={% url 'homepages:firstLoughe' %} title="Link to form testing web-page"> FORM Testing Page</a> <br>
-            <a href="../lists/new" title="Link to TDD testing web-page">Testing-Driven Design Home Page</a> <br>
+            <a href={% url 'book:books_list' %}              title="Link to book management web-page">Book Management</a> <br>
+            <a href={% url 'homepages:datetime' %}       title="Link to current datetime web-page">Current Time</a> <br>
+            <a href="../admin"                                       title="Link to website management page">Website Management</a> <br>
+            <a href="../about"                                        title="Link to about page">About</a> <br>
+            <a href={% url 'homepages:newLounge' %}   title="Link to HTML5&CSS web-page">HTML5&CSS Testing Page</a> <br>
+    		<a href={% url 'homepages:firstLoughe' %}   title="Link to form testing web-page"> FORM Testing Page</a> <br>
+            <a href={% url 'lists:new_list' %}                  title="Link to TDD testing web-page">Testing-Driven Design Home Page</a> <br>
     {#		<a href={% url 'homepages:myFirstJavaScript' %} title="Link to HTML5&JavaScript testing web-page">#}
     {#			HTML5&JavaScript Testing Page</a> <br> #}
     {#		<a href={% url 'homepages:json' %} title="Link to HTML5&JSON testing web-page">#}
     {#			HTML5&JSON Testing Page</a> <br> #}
     {#	  <a href={% url 'homepages:show_picture' %} title="Link to Bokeh webui"> Bokeh WebUI Testing Page</a> <br> #}
           <br>
-          <a href="#top"> Back to top</a>
+            <a href="#top"> Back to top</a>
         </p>
 {% endblock %}
