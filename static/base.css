@@ -63,10 +63,16 @@ a:hover {
 	display: table-cell;
 }
 
+#container {
+	padding: 0px 0px 10px 0px;
+	background: #b5a789 url(images/cocktail.gif) repeat-x;
+	background-position: bottom;
+  }
+
 header.top {
 	background-color: #675c47;
 	color: #efe5d0;
-	height: 168px;
+	height: 148px;
 	padding-top: 1px;
 	text-align: left;
 	align-items: center;
@@ -83,18 +89,19 @@ footer {
 
 header.top img {
 	margin-left: 21px;
+	margin-top:2px;
 	float: left;
 }
 
 header.top img#headerLogo {
 	margin-left: 21px;
-	margin-top: 8px;
+	margin-top: 20px;
 	float: left;
 }
 
-header.top p.slogan {
-	padding-top: 50px;
-	padding-left: 42px;
+header.top .slogan {
+	padding-top: 10px;
+	padding-left: 162px;
 	color: #efe5d0;
 }
 
@@ -165,13 +172,6 @@ aside {
 	vertical-align: top;
 	width: 30%;
 }
-
-#container {
-	padding: 0px 0px 10px 0px;
-	background-color:  #b5a789;
-	background: url(images/cocktail.gif) repeat-x;
-	background-position: bottom;
-  }
 
 #gohome {
 	padding: 0px 0px 0px 40px;

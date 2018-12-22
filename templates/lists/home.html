@@ -2,6 +2,31 @@
 
 {% block title %}To-Do Lists{% endblock %}
 
-{% block header_text %}Start a new To-Do list{% endblock %}
+{% block header_text %}
+    <img id="headerLogo" src="/static/images/svg_logo.svg" alt="logo" width="100" height="100" />
+    <h1 class="slogan"> Start a new To-Do list</h1>
+{% endblock %}
 
 {#{% block form_action %}{% url 'new_list' %}{% endblock %}#}
+
+{% block content %}
+    <form method="POST">
+        <input type="text" name="item_text" id="id_new_item" placeholder="Enter a to-do item"/>
+{#        {% csrf_token %}#}
+    </form>
+    <table id="id_list_table">
+        <tr><td>1:{{  new_item_text }}</td></tr>
+    </table>
+{% endblock %}
+
+{#    {% if form %}#}
+{#        <form method="POST" action="{% block form_action %}{% endblock %}">#}
+{#                      {{ form.text }}#}
+{#                      {% csrf_token %}#}
+{#                      {% if form.errors %}#}
+{#                          <div class="form-group has-error">#}
+{#                            <span class="help-block">{{ form.text.errors }}</span>#}
+{#                          </div>#}
+{#                      {% endif %}#}
+{#        </form>#}
+{#    {% endif %}#}

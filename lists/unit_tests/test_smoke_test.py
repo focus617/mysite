@@ -9,7 +9,7 @@ from django.utils.html import escape
 from unittest import skip
 
 # Create your tests here.
-from lists.views import home_page
+from lists.views import lists_homepage
 
 
 class SmokeTest(TestCase):

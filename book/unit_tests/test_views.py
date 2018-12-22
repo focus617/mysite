@@ -8,10 +8,23 @@ from django.template.loader import render_to_string
 from django.utils.html import escape
 from unittest import skip
 
-import datetime
-
 # Create your tests here.
+from book.views import  books_list
 from book.models import Classfication, Author, Publisher, Book
+
+class ListsPageTest(TestCase):
+
+    def test_books_list_page_renders_lists_correct_template(self):
+        response = self.client.get('/book/books')
+        self.assertTemplateUsed(response, 'book/book_list.html')
+
+# Can be replaced by test_home_page_renders_home_template and test_home_page_uses_item_form
+    def test_books_list_page_returns_correct_html(self):
+        request = HttpRequest()
+        response = books_list(request)
+        self.assertTrue(response.content.startswith(b'<!DOCTYPE html>'),  'Response content starts with :' + str(response.content[:10]))
+        self.assertIn(b'<title>Web Application</title>', response.content)
+        self.assertTrue(response.content.strip().endswith(b'</html>'))
 
 
 # class NewListTest(TestCase):

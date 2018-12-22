@@ -50,7 +50,7 @@ class BookList(ListView):
     context_object_name = 'book_list'
 
 
-def book_list(request):
+def books_list(request):
     books = Book.objects.order_by('publication_date')
     for book in books:
         authors = Author.objects.filter(book__id=book.id)

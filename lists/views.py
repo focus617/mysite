@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.http import  HttpResponse
 from django.core.exceptions import ValidationError
 
 import datetime
@@ -8,10 +9,16 @@ import datetime
 # from lists.forms import ItemForm, ExistingListItemForm
 
 
-def home_page(request):
-    #R1:
-       return render(request, 'lists/home.html')
-        # { 'new_item_text': new_item_text,})
+def lists_homepage(request):
+    """
+    # R1:
+    return render(request, 'lists/home.html')
+    """
+    # R1.1:
+    return render(request, 'lists/home.html',
+                  {'new_item_text': request.POST.get('item_text','')})
+
+    """
     # R2:
     #     if request.method == 'POST':
     #         Item.objects.create(text=request.POST['text'])
@@ -21,7 +28,7 @@ def home_page(request):
     # R3: migrates POST to new_list view,
     #     via home.html: <form method="POST" action="lists/new">
     # return render(request, 'home.html', {'form': ItemForm()})
-
+    """
 
 # def view_list(request, list_id):
 #     list_ = List.objects.get(id=list_id)

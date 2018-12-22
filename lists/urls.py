@@ -16,7 +16,8 @@ Including another URLconf
 from django.conf.urls import url
 from lists import views
 
+app_name = 'lists'
 urlpatterns = [
     url(r'^(\d+)/$',        views.view_list, name='view_list'),
-    url(r'^new$',            views.home_page,  name='new_list'),
+    url(r'^new$',            views.lists_homepage,  name='new_list'),
 ]
