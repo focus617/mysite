@@ -13,6 +13,10 @@ from lists.views import lists_homepage
 
 
 class ListsPageTest(TestCase):
+    def discard_csrf(self, html_string):
+        import re
+        csrf_regex = r'<input[^>]+csrfmiddlewaretoken[^>]+>'
+        return re.sub(csrf_regex, '', html_string)
 
 # Can be replaced by test_home_page_renders_home_template and test_home_page_uses_item_form
     def test_lists_page_renders_lists_home_template(self):
@@ -27,8 +31,9 @@ class ListsPageTest(TestCase):
         self.assertTrue(response.content.startswith(b'<!DOCTYPE html>'))
         self.assertIn(b'<title>To-Do Lists</title>', response.content)
         self.assertTrue(response.content.strip().endswith(b'</html>'))
-        expected_html = render_to_string('lists/home.html')
-        self.assertEqual(response.content.decode(), expected_html)
+        expected_html = self.discard_csrf(render_to_string('lists/home.html'))
+        response_html = self.discard_csrf(response.content.decode())
+        self.assertEqual(response_html, expected_html)
 
 #         expected_html = render_to_string('home.html', {'form': ItemForm()})
 #         self.assertMultiLineEqual(response.content.decode(), expected_html)
@@ -42,9 +47,10 @@ class ListsPageTest(TestCase):
         response = lists_homepage(request)
         self.assertIn('A new list item', response.content.decode())
 
-        expected_html = render_to_string('lists/home.html',
-                                         { 'new_item_text': 'A new list item'})
-        self.assertEqual(response.content.decode(), expected_html)
+        expected_html = self.discard_csrf(render_to_string('lists/home.html',
+                                         {'new_item_text': 'A new list item'}))
+        response_html = self.discard_csrf(response.content.decode())
+        self.assertEqual(response_html, expected_html)
 
         # self.assertEqual(Item.objects.count(), 1)
         # new_item = Item.objects.first()

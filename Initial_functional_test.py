@@ -7,9 +7,23 @@ import unittest
 import time
 
 
+class SmokeTest(unittest.TestCase):
+    def setUp(self):
+        self.browser = webdriver.Firefox()
+        self.browser.implicitly_wait(3)
+
+    def tearDown(self):
+        self.browser.quit()
+
+    def test_lists_home_title(self):
+        self.browser.get('http://localhost:8000/lists/new')
+        self.assertIn('To-Do', self.browser.title,
+                      "Browser title is " + self.browser.title)
+
+
 class NewVisitorTest(unittest.TestCase):
     def setUp(self):
-        self.browser = webdriver.Ie()
+        self.browser = webdriver.Firefox()
         self.browser.implicitly_wait(3)
 
     def tearDown(self):
@@ -45,12 +59,9 @@ class NewVisitorTest(unittest.TestCase):
         # 她按回车键后，页面更新了
         # 这个页面的待办事项表格中显示了“1: Buy peacock feathers”
         inputbox.send_keys(Keys.ENTER)
-        time.sleep(10)
+        time.sleep(1)   # 在此必须等待一下，以便服务器响应
 
-        table = self.browser.find_element_by_id('id_list_table')
-        rows = table.find_elements_by_tag_name('tr')
-        self.assertIn('1:Buy peacock feathers', [row.text for row in rows])
-
+        self.check_for_row_in_list_table('1:Buy peacock feathers')
 
         # edith_list_url = self.browser.current_url
         # self.assertRegex(edith_list_url, '/lists/.+')
