@@ -40,6 +40,9 @@ class NewVisitorTest(unittest.TestCase):
     def get_item_input_box(self, id_name):
         return self.browser.find_element_by_id(id_name)
 
+    # 因为本测试还没有实现在测试结束后清理数据库，停止本测试。
+    # 相关功能转移到test_lists_simple_list_creation.py
+    @unittest.skip
     def test_can_start_a_list_and_retrieve_it_later(self):
         # 伊迪丝听说有一个很酷的在线待办事项应用
         # 她去看了这个应用的首页
@@ -52,7 +55,6 @@ class NewVisitorTest(unittest.TestCase):
         self.assertIn('To-Do', header_text, "Header now is " + header_text)
 
         # 应用邀请她输入一个待办事项
-        # inputbox = self.browser.find_element_by_id('id_new_item')
         inputbox = self.get_item_input_box('id_new_item')
         self.assertEqual(
             inputbox.get_attribute('placeholder'),
@@ -92,11 +94,9 @@ class NewVisitorTest(unittest.TestCase):
         # 伊迪丝想知道这个网站是否会记住她的清单
         # 她看到网站为她生成了一个唯一的URL
         # 而且页面中有一些文字解说这个功能
-        self.fail('Finish the test!')
-
         # 她访问那个URL，发现她的待办事项列表还在
         # 她很满意，去睡觉了
-        browser.quit()
+        # self.fail('Finish the test!')
 
 
 if __name__ == '__main__':

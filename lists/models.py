@@ -3,9 +3,10 @@ from django.db import models
 # from django.urls import reverse
 
 # Create your models here.
-#
-#
-# class List(models.Model):
+
+
+class List(models.Model):
+    pass
 #     name = models.CharField(max_length=30, default='')
 #
 #     def get_absolute_url(self):
