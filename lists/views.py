@@ -5,7 +5,7 @@ from django.core.exceptions import ValidationError
 import datetime
 
 # Create your views here.
-# from lists.models import Item, List
+from lists.models import Item
 # from lists.forms import ItemForm, ExistingListItemForm
 
 
@@ -13,18 +13,35 @@ def lists_homepage(request):
     """
     # R1:
     return render(request, 'lists/home.html')
-    """
+
     # R1.1:
     return render(request, 'lists/home.html',
                   {'new_item_text': request.POST.get('item_text', '')})
 
+    # R1.2:
+    item = Item()
+    item.text = request.POST.get('item_text', '')
+    item.save()
+
+    return render(request, 'lists/home.html',
+                  {'new_item_text': item.text})
+
+    # R1.3:
+    if request.method == 'POST':
+        new_item_text = request.POST['item_text']
+        Item.objects.create(text=new_item_text)
+    else:
+        new_item_text = ''
+    return render(request, 'lists/home.html',
+                  {'new_item_text': new_item_text})
     """
-    # R2:
-    #     if request.method == 'POST':
-    #         Item.objects.create(text=request.POST['text'])
-    #         return redirect('/lists/the-only-list-in-the-world/')
-    #     else:
-    #        return render(request, 'home.html')
+    # R1.4:
+    if request.method == 'POST':
+        Item.objects.create(text=request.POST['item_text'])
+        return redirect('/')
+    else:
+        return render(request, 'lists/home.html')
+    """
     # R3: migrates POST to new_list view,
     #     via home.html: <form method="POST" action="lists/new">
     # return render(request, 'home.html', {'form': ItemForm()})
