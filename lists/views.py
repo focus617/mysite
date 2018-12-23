@@ -34,13 +34,21 @@ def lists_homepage(request):
         new_item_text = ''
     return render(request, 'lists/home.html',
                   {'new_item_text': new_item_text})
-    """
+
     # R1.4:
     if request.method == 'POST':
         Item.objects.create(text=request.POST['item_text'])
         return redirect('/')
     else:
         return render(request, 'lists/home.html')
+    """
+    # R1.5:
+    if request.method == 'POST':
+        Item.objects.create(text=request.POST['item_text'])
+        return redirect('/lists/new')
+    else:
+        items = Item.objects.all()
+        return render(request, 'lists/home.html', {'items': items})
     """
     # R3: migrates POST to new_list view,
     #     via home.html: <form method="POST" action="lists/new">

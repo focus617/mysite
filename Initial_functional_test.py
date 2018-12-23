@@ -84,9 +84,9 @@ class NewVisitorTest(unittest.TestCase):
         time.sleep(1)
 
         # 页面再次更新，她的清单中显示了这两个待办事项
-        self.check_for_row_in_list_table('1: Buy peacock feathers',
+        self.check_for_row_in_list_table('1:Buy peacock feathers',
                                          'New to-do item did not appear in table')
-        self.check_for_row_in_list_table('2: Use peacock feathers to make a fly',
+        self.check_for_row_in_list_table('2:Use peacock feathers to make a fly',
                                          'New to-do item did not appear in table')
 
         # 伊迪丝想知道这个网站是否会记住她的清单

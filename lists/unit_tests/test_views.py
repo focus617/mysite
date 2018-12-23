@@ -63,7 +63,7 @@ class ListsPageTest(TestCase):
 #         self.assertEqual(response.status_code, 302)
 #         self.assertEqual(response['location'], '/')
 
-    def test_home_page_can_save_a_POST_request(self):
+    def test_lists_page_can_save_a_POST_request(self):
         request = HttpRequest()
         request.method = 'POST'
         request.POST['item_text'] = 'A new list item'
@@ -74,7 +74,7 @@ class ListsPageTest(TestCase):
         new_item = Item.objects.first()
         self.assertEqual(new_item.text, 'A new list item')
 
-    def test_home_page_can_redirects_after_POST(self):
+    def test_lists_page_can_redirects_after_POST(self):
         request = HttpRequest()
         request.method = 'POST'
         request.POST['item_text'] = 'A new list item'
@@ -82,9 +82,19 @@ class ListsPageTest(TestCase):
         response = lists_homepage(request)
 
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(response['location'], '/')
+        self.assertEqual(response['location'], '/lists/new')
 
-    def test_home_page_only_saves_items_when_necessary(self):
+    def test_lists_page_only_saves_items_when_necessary(self):
         request = HttpRequest()
         lists_homepage(request)
         self.assertEqual(Item.objects.count(), 0)
+
+    def test_lists_page_displays_all_list_items(self):
+        Item.objects.create(text='itemey 1')
+        Item.objects.create(text='itemey 2')
+
+        request = HttpRequest()
+        response = lists_homepage(request)
+
+        self.assertIn('itemey 1', response.content.decode())
+        self.assertIn('itemey 2', response.content.decode())
