@@ -16,7 +16,7 @@ def lists_homepage(request):
     """
     # R1.1:
     return render(request, 'lists/home.html',
-                  {'new_item_text': request.POST.get('item_text','')})
+                  {'new_item_text': request.POST.get('item_text', '')})
 
     """
     # R2:
