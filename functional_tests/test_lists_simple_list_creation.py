@@ -37,9 +37,9 @@ class NewVisitorTest(FunctionalTest):
         inputbox.send_keys(Keys.ENTER)
         time.sleep(1)
 
-        # edith_list_url = self.browser.current_url
-        # self.assertRegex(edith_list_url, '/lists/.+')
-        # self.check_for_row_in_list_table('1: Buy peacock feathers')
+        edith_list_url = self.browser.current_url
+        self.assertRegex(edith_list_url, '/lists/.+')
+        self.check_for_row_in_list_table('1:Buy peacock feathers')
 
         # 页面中又显示了一个文本框，可以输入其他的待办事项
         # 她输入了“Use peacock feathers to make a fly”（使用孔雀羽毛做假蝇）
@@ -58,33 +58,38 @@ class NewVisitorTest(FunctionalTest):
         # 而且页面中有一些文字解说这个功能
         # 她访问那个URL，发现她的待办事项列表还在
         # 她很满意，去睡觉了
-        """
+
         # 现在一个叫作弗朗西斯的新用户访问了网站
         # # 我们使用一个新浏览器会话
         # # 确保伊迪丝的信息不会从cookie中泄露出来
         self.browser.quit()
         self.browser = webdriver.Firefox()
+
         # 弗朗西斯访问首页
         # 页面中看不到伊迪丝的清单
         self.browser.get(self.server_url + '/lists/new')
         page_text = self.browser.find_element_by_tag_name('body').text
         self.assertNotIn('Buy peacock feathers', page_text)
         self.assertNotIn('make a fly', page_text)
+
         # 弗朗西斯输入一个新待办事项，新建一个清单
         # 他不像伊迪丝那样兴趣盎然
         inputbox = self.get_item_input_box()
         inputbox.send_keys('Buy milk')
         inputbox.send_keys(Keys.ENTER)
         time.sleep(1)
+
         # 弗朗西斯获得了他的唯一URL
         francis_list_url = self.browser.current_url
         self.assertRegex(francis_list_url, '/lists/.+')
         self.assertNotEqual(francis_list_url, edith_list_url)
+
         # 这个页面还是没有伊迪丝的清单
         page_text = self.browser.find_element_by_tag_name('body').text
         self.assertNotIn('Buy peacock feathers', page_text)
         self.assertIn('Buy milk', page_text)
+
         # 两人都很满意，去睡觉了
-        """
+
 
 
