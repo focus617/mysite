@@ -2,6 +2,7 @@
 # -*- coding:utf-8 -*-
 
 from .lists_base import FunctionalTest
+from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
 
@@ -35,7 +36,7 @@ class NewVisitorTest(FunctionalTest):
         # 她按回车键后，被带到了一个新URL
         # 这个页面的待办事项表格中显示了“1: Buy peacock feathers”
         inputbox.send_keys(Keys.ENTER)
-        time.sleep(1)
+        time.sleep(2)
 
         edith_list_url = self.browser.current_url
         self.assertRegex(edith_list_url, '/lists/.+')

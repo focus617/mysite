@@ -41,19 +41,29 @@ def lists_homepage(request):
         return redirect('/')
     else:
         return render(request, 'lists/home.html')
-    """
+
     # R1.5:
     if request.method == 'POST':
         Item.objects.create(text=request.POST['item_text'])
-        return redirect('/lists/new')
+        return redirect('/lists/the-only-list-in-the-world/')
     else:
         items = Item.objects.all()
         return render(request, 'lists/home.html', {'items': items})
     """
+    # R2: migrates POST to new_list view
+    if request.method == 'POST':
+        Item.objects.create(text=request.POST['item_text'])
+        return redirect('/lists/the-only-list-in-the-world/')
+    else:
+        return render(request, 'lists/home.html')
     # R3: migrates POST to new_list view,
     #     via home.html: <form method="POST" action="lists/new">
     # return render(request, 'home.html', {'form': ItemForm()})
-    """
+
+
+def view_list(request):
+    items = Item.objects.all()
+    return render(request, 'lists/list.html', {'items': items})
 
 # def view_list(request, list_id):
 #     list_ = List.objects.get(id=list_id)
@@ -72,24 +82,24 @@ def lists_homepage(request):
 # return render(request, 'list.html', {'form': ItemForm(), 'list': list_,
 # 'error': error})
 
-def view_list(request, list_id):
-    list_ = List.objects.get(id=list_id)
-    form = ExistingListItemForm(for_list=list_)
-    if request.method == 'POST':
-        form = ExistingListItemForm(for_list=list_, data=request.POST)
-        if form.is_valid():
-            #item = Item.objects.create(text=request.POST['text'], list=list_)
-            form.save()
-            return redirect(list_)
-    return render(request, 'list.html', {'form': form, 'list': list_, })
+# def view_list(request, list_id):
+#     list_ = List.objects.get(id=list_id)
+#     form = ExistingListItemForm(for_list=list_)
+#     if request.method == 'POST':
+#         form = ExistingListItemForm(for_list=list_, data=request.POST)
+#         if form.is_valid():
+#             #item = Item.objects.create(text=request.POST['text'], list=list_)
+#             form.save()
+#             return redirect(list_)
+#     return render(request, 'list.html', {'form': form, 'list': list_, })
 
 
-def new_list(request):
-    form = ItemForm(data=request.POST)
-    if form.is_valid():
-        list_ = List.objects.create()
-        #Item.objects.create(text=request.POST['text'], list=list_)
-        form.save(for_list=list_)
-        return redirect(list_)
-    else:
-        return render(request, 'home.html', {'form': form})
+# def new_list(request):
+#     form = ItemForm(data=request.POST)
+#     if form.is_valid():
+#         list_ = List.objects.create()
+#         #Item.objects.create(text=request.POST['text'], list=list_)
+#         form.save(for_list=list_)
+#         return redirect(list_)
+#     else:
+#         return render(request, 'home.html', {'form': form})
