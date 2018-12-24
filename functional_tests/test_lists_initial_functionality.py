@@ -16,7 +16,7 @@ class SmokeTest(unittest.TestCase):
         self.browser.quit()
 
     def test_lists_home_title(self):
-        self.browser.get('http://localhost:8000/lists/new')
+        self.browser.get('http://localhost:8000/lists/')
         self.assertIn('To-Do', self.browser.title,
                       "Browser title is " + self.browser.title)
 

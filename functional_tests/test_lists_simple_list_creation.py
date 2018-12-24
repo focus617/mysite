@@ -15,7 +15,7 @@ class NewVisitorTest(FunctionalTest):
     def test_can_start_a_list_and_retrieve_it_later(self):
         # 伊迪丝听说有一个很酷的在线待办事项应用
         # 她去看了这个应用的首页
-        self.browser.get(self.server_url + '/lists/new')
+        self.browser.get(self.server_url + '/lists/')
 
         # 她注意到网页的标题和头部都包含“To-Do”这个词
         self.assertIn('To-Do', self.browser.title)
@@ -68,7 +68,7 @@ class NewVisitorTest(FunctionalTest):
 
         # 弗朗西斯访问首页
         # 页面中看不到伊迪丝的清单
-        self.browser.get(self.server_url + '/lists/new')
+        self.browser.get(self.server_url + '/lists/')
         page_text = self.browser.find_element_by_tag_name('body').text
         self.assertNotIn('Buy peacock feathers', page_text)
         self.assertNotIn('make a fly', page_text)

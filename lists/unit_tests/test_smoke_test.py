@@ -17,6 +17,6 @@ class SmokeTest(TestCase):
         self.assertEquals(1+1, 2)
 
     def test_lists_page_renders_lists_home_template(self):
-        response = self.client.get('/lists/new')
+        response = self.client.get('/lists/')
         self.assertTemplateUsed(response, 'lists/home.html')
 
