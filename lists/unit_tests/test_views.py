@@ -209,3 +209,16 @@ class NewListTest(TestCase):
 
         # 检查每个对象都是希望得到的，或者查询集合中包含正确的待办事项
         self.assertEqual(response.context['list'], correct_list)
+
+# Break down the TC into below 3 TCs
+    def test_validation_errors_are_sent_back_to_home_page_template(self):
+        response = self.client.post('/lists/new', data={'item_text': ''})
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'lists/home.html')
+        expected_error = escape("You can't have an empty list item")
+        self.assertContains(response, expected_error)
+
+    def test_invalid_list_items_arent_saved(self):
+        self.client.post('/lists/new', data={'item_text': ''})
+        self.assertEqual(List.objects.count(), 0)
+        self.assertEqual(Item.objects.count(), 0)

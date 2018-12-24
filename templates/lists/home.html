@@ -22,24 +22,17 @@
                         <input type="text" name="item_text" id="id_new_item"
                                     class="form-control input-lg" placeholder="Enter a to-do item"/>
                         {% csrf_token %}
+                        {% if error %}
+                          <div class="form-group has-error">
+                            <span class="help-block">{{ error }}</span>
+                          </div>
+                        {% endif %}
                     </form>
                 </div>
             </div> <!-- col-md-6 -->
         <div> <!-- row -->
     </div> <!-- container -->
 {% endblock %}
-
-{#{% block lists_content %}#}
-{#    <form method="POST" action="{% url 'lists:new_list' %}">#}
-{#      <input type="text" name="item_text" id="id_new_item" placeholder="Enter a to-do item"/>#}
-{#      {% csrf_token %}#}
-{#      {% if form.errors %}#}
-{#          <div class="form-group has-error">#}
-{#            <span class="help-block">{{ form.text.errors }}</span>#}
-{#          </div>#}
-{#      {% endif %}#}
-{#    </form>#}
-{#{% endblock %}#}
 
 {% block js %}
     <script src="http://code.jquery.com/jquery.js"></script>
