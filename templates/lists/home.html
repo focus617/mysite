@@ -1,5 +1,10 @@
 {% extends 'base.html' %}
 
+{% block css %}
+    <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link type="text/css" rel="stylesheet" href="/static/lists.css">
+{% endblock %}
+
 {% block title %}To-Do Lists{% endblock %}
 
 {% block header_text %}
@@ -7,23 +12,36 @@
     <h1 class="slogan"> Start a new To-Do list</h1>
 {% endblock %}
 
-{#{% block form_action %}{% url 'new_list' %}{% endblock %}#}
-
 {% block content %}
-    <form method="POST" action={% url 'lists:new_list' %} >
-        <input type="text" name="item_text" id="id_new_item" placeholder="Enter a to-do item"/>
-        {% csrf_token %}
-    </form>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3" jumbotron>
+                <div class="text-center">
+                    <form method="POST" action={% url 'lists:new_list' %} >
+                        <label for="id_new_item"> Enter a To-Do Item: </label>
+                        <input type="text" name="item_text" id="id_new_item"
+                                    class="form-control input-lg" placeholder="Enter a to-do item"/>
+                        {% csrf_token %}
+                    </form>
+                </div>
+            </div> <!-- col-md-6 -->
+        <div> <!-- row -->
+    </div> <!-- container -->
 {% endblock %}
 
-{#    {% if form %}#}
-{#        <form method="POST" action="{% block form_action %}{% endblock %}">#}
-{#                      {{ form.text }}#}
-{#                      {% csrf_token %}#}
-{#                      {% if form.errors %}#}
-{#                          <div class="form-group has-error">#}
-{#                            <span class="help-block">{{ form.text.errors }}</span>#}
-{#                          </div>#}
-{#                      {% endif %}#}
-{#        </form>#}
-{#    {% endif %}#}
+{#{% block lists_content %}#}
+{#    <form method="POST" action="{% url 'lists:new_list' %}">#}
+{#      <input type="text" name="item_text" id="id_new_item" placeholder="Enter a to-do item"/>#}
+{#      {% csrf_token %}#}
+{#      {% if form.errors %}#}
+{#          <div class="form-group has-error">#}
+{#            <span class="help-block">{{ form.text.errors }}</span>#}
+{#          </div>#}
+{#      {% endif %}#}
+{#    </form>#}
+{#{% endblock %}#}
+
+{% block js %}
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="/static/bootstrap/js/bootstrap.min.js"></script>
+{% endblock %}

@@ -1,0 +1,32 @@
+body {
+}
+
+form {
+	display: table;
+    width: 460px;
+	padding: 10px;
+	border: thin dotted #7e7e7e;
+	background-color: #e1ceb8;
+}
+
+form textarea {
+    width: 400px;
+    height: 160px;
+}
+
+div.tableRow {
+    display: table-row;
+}
+
+div.tableRow p {
+    display: table-cell;
+    vertical-align: center;
+    padding: 3px;
+}
+
+label {
+	color: blue;
+	text-align: left;
+    font-size: 160%;
+    font-weight: bold;
+}

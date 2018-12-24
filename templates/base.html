@@ -33,12 +33,15 @@
                     </aside>
                 {% endif %}
             </div> <!-- tableRow -->
+
+        {% block lists_content %} {% endblock %}
+
         </div>  <!-- tableContainer -->
 
         <hr>
         <p id="gohome">
-                <a href={% url 'homepages:home' %}> Back Home </a>
-            </p>
+            <a href={% url 'homepages:home' %}> Back Home </a>
+        </p>
     </div>  <!-- container -->
 
     <footer>
@@ -48,5 +51,6 @@
             the property of their respective owners.
         </small>
     </footer>
+    {% block js %} {% endblock %}
 </body>
 </html>

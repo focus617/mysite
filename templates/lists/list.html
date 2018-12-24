@@ -1,5 +1,10 @@
 {% extends 'base.html' %}
 
+{% block css %}
+    <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link type="text/css" rel="stylesheet" href="/static/lists.css">
+{% endblock %}
+
 {% block title %}Your To-Do list{% endblock %}
 
 {% block header_text %}
@@ -7,18 +12,36 @@
     <h1 class="slogan"> Your To-Do list</h1>
 {% endblock %}
 
-{#{% block form_action %}{% url 'view_list' list.id %}{% endblock %}#}
-
 {% block content %}
-    <form method="POST" action="/lists/{{ list.id }}/" %} >
-        <input type="text" name="item_text" id="id_new_item" placeholder="Enter a to-do item"/>
-        {% csrf_token %}
-    </form>
+    <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-md-offset-3" jumbotron>
+            <div class="text-center">
+                <form method="POST" action="/lists/{{ list.id }}/" %} >
+                    <label for="id_new_item"> Enter a To-Do Item: </label>
+                    <input type="text" name="item_text" id="id_new_item"
+                           class="form-control input-lg" placeholder="Enter a to-do item"/>
+                    {% csrf_token %}
+                </form>
+            </div> <!-- text-center -->
+          </div> <!-- col-md-6 -->
+        <div> <!-- row -->
 
-    <table id="id_list_table">
-        {% for item in list.item_set.all %}
-            <tr><td>{{ forloop.counter }}:{{ item.text }}</td></tr>
-        {% endfor %}
-    </table>
+        <div class="row">
+          <div class="col-md-6 col-md-offset-3">
+            <table id="id_list_table" class="table">
+                {% for item in list.item_set.all %}
+                    <tr><td>{{ forloop.counter }}:{{ item.text }}</td></tr>
+                {% endfor %}
+            </table>
+          </div> <!-- col-md-6 -->
+        <div> <!-- row -->
+    </div> <!-- container -->
+{% endblock %}
+
+
+{% block js %}
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="/static/bootstrap/js/bootstrap.min.js"></script>
 {% endblock %}
 
